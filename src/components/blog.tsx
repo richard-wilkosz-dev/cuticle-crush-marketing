@@ -19,7 +19,13 @@ type BlogProps = {
 
 function BlogImages({ images }: { images: string[] }) {
   if (images.length === 1) {
-    return <img aria-hidden src={images[0]} className="w-full max-w-xs" />
+    return (
+      <img
+        aria-hidden
+        src={images[0]}
+        className="w-full max-w-xs rounded-4xl"
+      />
+    )
   } else if (images.length > 1) {
     const [api, setApi] = useState<CarouselApi>()
     const [selectedIndex, setSelectedIndex] = useState(0)
@@ -53,20 +59,15 @@ function BlogImages({ images }: { images: string[] }) {
         <CarouselContent>
           {images.map((_, index) => (
             <CarouselItem key={index}>
-              <div className="p-1">
-                <img
-                  src={images[index]}
-                  className="aspect-square w-full rounded-2xl object-cover"
-                />
-              </div>
+              <img src={images[index]} className="rounded-4xl" />
             </CarouselItem>
           ))}
         </CarouselContent>
 
         <div className="mt-3 flex items-center px-1">
           <div className="flex items-center gap-2">
-            <CarouselPrevious className="static" />
-            <CarouselNext className="static" />
+            <CarouselPrevious className="static hover:bg-muted/50" />
+            <CarouselNext className="static hover:bg-muted/50" />
           </div>
 
           <div
@@ -82,8 +83,8 @@ function BlogImages({ images }: { images: string[] }) {
                 className={cn(
                   "h-2.5 w-2.5 rounded-full transition",
                   selectedIndex === index
-                    ? "bg-foreground"
-                    : "bg-foreground/30 hover:bg-foreground/60"
+                    ? "bg-primary"
+                    : "bg-muted/40 hover:bg-muted/80"
                 )}
                 onClick={() => api?.scrollTo(index)}
               />
@@ -100,8 +101,8 @@ export function Blog({ sectionId, title, content, images }: BlogProps) {
   const isMobile = useIsMobile()
 
   return (
-    <section className="m-auto w-full max-w-2xl scroll-mt-24" id={sectionId}>
-      <div className={cn("flex gap-4", isMobile ? "flex-col" : "flex-row")}>
+    <section className="scroll-mt-24" id={sectionId}>
+      <div className={cn("flex gap-2", isMobile ? "flex-col" : "flex-row")}>
         {isMobile && <h2 className="text-3xl font-semibold">{title}</h2>}
         <BlogImages images={images ?? []} />
         <div className="flex flex-col">

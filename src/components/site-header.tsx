@@ -15,10 +15,10 @@ export function SiteHeader({
   const isMobile = useIsMobile()
 
   return (
-    <header className="sticky top-0 z-50 flex w-full items-center border-b bg-background">
+    <header className="sticky top-0 z-50 flex w-full items-center border-b bg-card">
       <div className="flex h-(--header-height) w-full items-center gap-2 px-4">
         <HeartHandshake className="h-6 w-6 text-primary" />
-        <h1 className="font-semibold">
+        <h1 className="text-sm font-semibold">
           {import.meta.env.DEV && isMobile ? "Mobile Crush" : "Cuticle Crush"}
         </h1>
         <div className="flex-1" />
@@ -29,7 +29,16 @@ export function SiteHeader({
             <TabsTrigger value="services">Services</TabsTrigger>
           </TabsList>
         </Tabs>
-        <Button>Book now</Button>
+        <Button
+          className="rounded-full"
+          onClick={() =>
+            window.navigation.navigate(
+              "https://www.nailzy.com/book/cuticle-crush"
+            )
+          }
+        >
+          <span className="px-2 text-[13px] font-semibold">Book now</span>
+        </Button>
       </div>
     </header>
   )
