@@ -11,5 +11,5 @@ export default defineConfig({
   },
   integrations: [react()],
   site: "https://richard-wilkosz-dev.github.io",
-  base: "/handbook-marketing",
+  base: "/cuticle-crush-marketing",
 })
