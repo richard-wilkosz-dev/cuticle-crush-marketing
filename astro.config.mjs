@@ -10,6 +10,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [react()],
-  site: "https://richard-wilkosz-dev.github.io",
-  base: "/cuticle-crush-marketing",
+  site: "https://cuticlecrush.com",
 })
