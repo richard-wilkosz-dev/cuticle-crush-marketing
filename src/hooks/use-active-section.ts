@@ -17,6 +17,8 @@ export function useActiveSection(
       return
     }
 
+    const lastSectionId = sectionIds[sectionIds.length - 1]
+
     const observedSections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((node): node is HTMLElement => node !== null)
@@ -43,10 +45,26 @@ export function useActiveSection(
       }
     )
 
+    const updateEdgeActiveSection = () => {
+      const scrollTop = window.scrollY
+      const viewportBottom = scrollTop + window.innerHeight
+      const documentBottom = document.documentElement.scrollHeight
+      const isAtBottom = viewportBottom >= documentBottom - 2
+
+      if (isAtBottom && lastSectionId) {
+        setActiveSection(lastSectionId)
+      }
+    }
+
     observedSections.forEach((section) => observer.observe(section))
+    window.addEventListener("scroll", updateEdgeActiveSection, { passive: true })
+    window.addEventListener("resize", updateEdgeActiveSection)
+    updateEdgeActiveSection()
 
     return () => {
       observer.disconnect()
+      window.removeEventListener("scroll", updateEdgeActiveSection)
+      window.removeEventListener("resize", updateEdgeActiveSection)
     }
   }, [sectionIds, options?.root, options?.rootMargin, options?.threshold])
 

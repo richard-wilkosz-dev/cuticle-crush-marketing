@@ -72,8 +72,8 @@
   --secondary-foreground: #52504c;
   --muted: #9a9590;
   --muted-foreground: #52504c;
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: #d47996;
+  --accent-foreground: #9f5b71;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #e0ddd8;
   --input: #ffffff;
@@ -142,6 +142,10 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 p:not(:last-child) {
