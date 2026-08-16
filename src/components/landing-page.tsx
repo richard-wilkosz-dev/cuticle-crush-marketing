@@ -3,9 +3,12 @@ import placeholderWide from "@/assets/placeholder-wide.avif"
 import { SiteHeader } from "@/components/site-header"
 import { useActiveSection } from "@/hooks/use-active-section"
 import { useIsMobile } from "@/hooks/use-mobile"
+import Autoplay from "embla-carousel-autoplay"
+import { useRef } from "react"
 import { Blog } from "./blog"
 import { Contact } from "./contact"
 import { AspectRatio } from "./ui/aspect-ratio"
+import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 
 const sections = [
   { id: "about-me", title: "About me" },
@@ -17,6 +20,7 @@ const sections = [
 const sectionIds = sections.map((section) => section.id)
 const placeholderSquareSrc = placeholderSquare.src
 const placeholderWideSrc = placeholderWide.src
+const heroImages = [placeholderWideSrc, placeholderWideSrc]
 
 const mockCopy = (
   <>
@@ -43,6 +47,9 @@ const mockCopy = (
 export function LandingPage() {
   const isMobile = useIsMobile()
   const activeSection = useActiveSection(sectionIds)
+  const autoplay = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
+  )
 
   const handleTabChange = (sectionId: string) => {
     const targetSection = document.getElementById(sectionId)
@@ -61,11 +68,23 @@ export function LandingPage() {
           ratio={isMobile ? 2 / 1 : 5 / 1}
           className="overflow-hidden"
         >
-          <img
-            src={placeholderWideSrc}
+          <Carousel
             aria-hidden
-            className="h-full w-full rounded-b-4xl object-cover"
-          />
+            className="h-full w-full"
+            opts={{ loop: heroImages.length > 1 }}
+            plugins={[autoplay.current]}
+          >
+            <CarouselContent className="h-full">
+              {heroImages.map((image, index) => (
+                <CarouselItem key={`${image}-${index}`} className="h-full">
+                  <img
+                    src={image}
+                    className="h-full w-full rounded-b-4xl object-cover"
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </AspectRatio>
         <div className="m-auto flex w-full max-w-3xl flex-col gap-12 px-8 pb-12">
           <Blog
