@@ -27,25 +27,7 @@ export function useActiveSection(
       return
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-
-        const nextSection = visibleEntries[0]?.target.id
-        if (nextSection) {
-          setActiveSection(nextSection)
-        }
-      },
-      {
-        root: options?.root ?? null,
-        rootMargin: options?.rootMargin ?? "-25% 0px -55% 0px",
-        threshold: options?.threshold ?? [0.2, 0.4, 0.6],
-      }
-    )
-
-    const updateEdgeActiveSection = () => {
+    const updateActiveSection = () => {
       const scrollTop = window.scrollY
       const viewportBottom = scrollTop + window.innerHeight
       const documentBottom = document.documentElement.scrollHeight
@@ -53,20 +35,32 @@ export function useActiveSection(
 
       if (isAtBottom && lastSectionId) {
         setActiveSection(lastSectionId)
+        return
+      }
+
+      const activationLine = window.innerHeight * 0.35
+      let nextSectionId = observedSections[0]?.id ?? ""
+
+      for (const section of observedSections) {
+        if (section.getBoundingClientRect().top <= activationLine) {
+          nextSectionId = section.id
+        }
+      }
+
+      if (nextSectionId) {
+        setActiveSection(nextSectionId)
       }
     }
 
-    observedSections.forEach((section) => observer.observe(section))
-    window.addEventListener("scroll", updateEdgeActiveSection, {
+    window.addEventListener("scroll", updateActiveSection, {
       passive: true,
     })
-    window.addEventListener("resize", updateEdgeActiveSection)
-    updateEdgeActiveSection()
+    window.addEventListener("resize", updateActiveSection)
+    updateActiveSection()
 
     return () => {
-      observer.disconnect()
-      window.removeEventListener("scroll", updateEdgeActiveSection)
-      window.removeEventListener("resize", updateEdgeActiveSection)
+      window.removeEventListener("scroll", updateActiveSection)
+      window.removeEventListener("resize", updateActiveSection)
     }
   }, [sectionIds, options?.root, options?.rootMargin, options?.threshold])
 
