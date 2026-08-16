@@ -1,3 +1,5 @@
+import placeholderSquare from "@/assets/placeholder-square.avif"
+import placeholderWide from "@/assets/placeholder-wide.avif"
 import { SiteHeader } from "@/components/site-header"
 import { useActiveSection } from "@/hooks/use-active-section"
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -13,11 +15,9 @@ const sections = [
 ] as const
 
 const sectionIds = sections.map((section) => section.id)
+const placeholderSquareSrc = placeholderSquare.src
+const placeholderWideSrc = placeholderWide.src
 
-const mockImage =
-  "https://plus.unsplash.com/premium_vector-1722007385342-a7719a9a4bb3?q=80&w=1180&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-const mockImageWide =
-  "https://plus.unsplash.com/premium_vector-1745261844755-7082cac96e34?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 const mockCopy = (
   <>
     <p>
@@ -62,7 +62,7 @@ export function LandingPage() {
           className="overflow-hidden"
         >
           <img
-            src={mockImageWide}
+            src={placeholderWideSrc}
             aria-hidden
             className="h-full w-full rounded-b-4xl object-cover"
           />
@@ -71,13 +71,17 @@ export function LandingPage() {
           <Blog
             sectionId="about-me"
             title="About me"
-            images={[mockImage]}
+            images={[placeholderSquareSrc]}
             content={mockCopy}
           />
           <Blog
             sectionId="studio"
             title="Studio"
-            images={[mockImage, mockImage, mockImage]}
+            images={[
+              placeholderSquareSrc,
+              placeholderSquareSrc,
+              placeholderSquareSrc,
+            ]}
             content={mockCopy}
             reversed
           />
@@ -85,7 +89,11 @@ export function LandingPage() {
             sectionId="services"
             title="Services"
             content={mockCopy}
-            images={[mockImage, mockImage, mockImage]}
+            images={[
+              placeholderSquareSrc,
+              placeholderSquareSrc,
+              placeholderSquareSrc,
+            ]}
           />
         </div>
         <Contact />
