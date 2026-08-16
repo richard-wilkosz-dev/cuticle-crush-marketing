@@ -57,7 +57,9 @@ export function useActiveSection(
     }
 
     observedSections.forEach((section) => observer.observe(section))
-    window.addEventListener("scroll", updateEdgeActiveSection, { passive: true })
+    window.addEventListener("scroll", updateEdgeActiveSection, {
+      passive: true,
+    })
     window.addEventListener("resize", updateEdgeActiveSection)
     updateEdgeActiveSection()
 
