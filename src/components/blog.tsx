@@ -1,12 +1,13 @@
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 import { type ReactNode } from "react"
+import { Heading } from "./heading"
 import { Image } from "./image"
 
 type BlogProps = {
   sectionId: string
   title: string
-  content: ReactNode
+  children: ReactNode
   images?: string[]
   reversed?: boolean
 }
@@ -14,7 +15,7 @@ type BlogProps = {
 export function Blog({
   sectionId,
   title,
-  content,
+  children,
   images,
   reversed,
 }: BlogProps) {
@@ -32,11 +33,15 @@ export function Blog({
               : "sm:flex-row"
         )}
       >
-        <h2 className="text-3xl font-semibold sm:hidden">{title}</h2>
+        <Heading level={1} className="text-3xl font-semibold sm:hidden">
+          {title}
+        </Heading>
         <Image images={images ?? []} />
         <div className="flex flex-col">
-          <h2 className="hidden text-3xl font-semibold sm:block">{title}</h2>
-          <div className="pt-4 sm:pt-2">{content}</div>
+          <Heading level={1} className="hidden text-3xl font-semibold sm:block">
+            {title}
+          </Heading>
+          <div className="pt-2">{children}</div>
         </div>
       </div>
     </section>

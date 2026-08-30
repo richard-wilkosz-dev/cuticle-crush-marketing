@@ -17,7 +17,8 @@ type SiteNavProps = {
 const items = [
   { label: "About me", value: "about-me" },
   { label: "Studio", value: "studio" },
-  { label: "Services", value: "services" },
+  { label: "Products", value: "products" },
+  { label: "Rewards", value: "rewards" },
   { label: "Contact", value: "contact" },
 ]
 

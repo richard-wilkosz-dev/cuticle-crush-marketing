@@ -27,16 +27,16 @@ export function SiteHeader({
           </SiteDrawer>
         </div> */}
         <HeartIcon className="h-6 w-6 text-primary" weight="bold" />
-        <h1 className="text-sm font-semibold">
+        <span className="text-sm font-semibold">
           {import.meta.env.DEV && isMobile ? "Mobile Crush" : "Cuticle Crush"}
-        </h1>
+        </span>
         <div className="flex-1" />
         <SiteNav value={activeTab} onValueChange={onTabChange} />
         <Button
           className="rounded-full"
           onClick={() =>
             window.navigation.navigate(
-              "https://www.nailzy.com/book/cuticle-crush"
+              "https://www.nailzy.com/book/cuticle-crush?book=1"
             )
           }
         >

@@ -151,3 +151,10 @@ a:hover {
 p:not(:last-child) {
   margin-bottom: 1.2rem;
 }
+
+p,
+h1,
+h2,
+h3 {
+  text-wrap: pretty; /* Better for longer paragraph body copy */
+}
