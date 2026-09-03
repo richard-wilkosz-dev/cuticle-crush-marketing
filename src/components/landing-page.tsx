@@ -1,10 +1,10 @@
+import Autoplay from "embla-carousel-autoplay"
+import { useRef } from "react"
 import placeholderSquare from "@/assets/placeholder-square.avif"
 import placeholderWide from "@/assets/placeholder-wide.avif"
 import { SiteHeader } from "@/components/site-header"
 import { useActiveSection } from "@/hooks/use-active-section"
 import { useIsMobile } from "@/hooks/use-mobile"
-import Autoplay from "embla-carousel-autoplay"
-import { useRef } from "react"
 import { Blog } from "./blog"
 import { Contact } from "./contact"
 import { Heading } from "./heading"
@@ -137,31 +137,29 @@ export function LandingPage() {
             ]}
             reversed
           >
-            <>
-              <p>
-                Cuticle Crush is a licensed, private, home nail salon. A clean
-                space with sterilized tools and unused supplies will be ready
-                for every client. All services are performed dry, meaning there
-                is no finger or foot soaking, eliminating water waste and
-                reducing risk of fungal/ bacterial spread. Hot towels are
-                included in some pedicures to retain the relaxing spa elements
-                that many enjoy. Have the appointment you want when you’re with
-                me! Feel free to watch a movie or show (tv provided 😘), listen
-                to music together, chit chat, or pop in your earbuds to listen
-                to your audiobook solo.
-              </p>
-              <p>
-                My studio address is automatically sent in a confirmation text
-                24hrs before your appointment.
-              </p>
-              <p>
-                The entrance has 5 steps and is not wheelchair accessible.
-                Accessibility is important to me, and making large structural
-                changes to remove this barrier is not currently readily
-                achievable. Please contact me if you have any other questions
-                regard the accessibility of my space.
-              </p>
-            </>
+            <p>
+              Cuticle Crush is a licensed, private, home nail salon. A clean
+              space with sterilized tools and unused supplies will be ready for
+              every client. All services are performed dry, meaning there is no
+              finger or foot soaking, eliminating water waste and reducing risk
+              of fungal/ bacterial spread. Hot towels are included in some
+              pedicures to retain the relaxing spa elements that many enjoy.
+              Have the appointment you want when you’re with me! Feel free to
+              watch a movie or show (tv provided 😘), listen to music together,
+              chit chat, or pop in your earbuds to listen to your audiobook
+              solo.
+            </p>
+            <p>
+              My studio address is automatically sent in a confirmation text
+              24hrs before your appointment.
+            </p>
+            <p>
+              The entrance has 5 steps and is not wheelchair accessible.
+              Accessibility is important to me, and making large structural
+              changes to remove this barrier is not currently readily
+              achievable. Please contact me if you have any other questions
+              regard the accessibility of my space.
+            </p>
           </Blog>
           <Blog
             images={[
@@ -172,75 +170,70 @@ export function LandingPage() {
             sectionId="products"
             title="Products"
           >
-            <>
-              <p>
-                I use high quality, professional gel and lacquer products. No
-                acrylic systems are used in my studio so there are no fumes to
-                worry about! Yay! Hypo-allergenic products are at the core of
-                Cuticle Crush.
-              </p>
-              <p>
-                Dazzle Dry is a low-maintenance, long lasting regular lacquer
-                that dries in 5 minutes (yes, really!!) and lasts 7-14 days
-                typically on hands and often 30+ days on toes. It is also
-                9-free. Light Elegance and Stellar Gel (HEMA/TPO/HPMA free) are
-                the main gel systems I use. Both are formulated to be as
-                hypoallergenic as possible, and although many with gel allergies
-                have used these products without a reaction, it is not a
-                guarantee.
-              </p>
-              <p>
-                If you have a known gel allergy, please contact me for nail
-                patch test prior to scheduling an appointment. Patch test
-                removal is free. Any product recommendation from me is from my
-                expertise as a licensed nail tech and is not medical advice.
-              </p>
-            </>
+            <p>
+              I use high quality, professional gel and lacquer products. No
+              acrylic systems are used in my studio so there are no fumes to
+              worry about! Yay! Hypo-allergenic products are at the core of
+              Cuticle Crush.
+            </p>
+            <p>
+              Dazzle Dry is a low-maintenance, long lasting regular lacquer that
+              dries in 5 minutes (yes, really!!) and lasts 7-14 days typically
+              on hands and often 30+ days on toes. It is also 9-free. Light
+              Elegance and Stellar Gel (HEMA/TPO/HPMA free) are the main gel
+              systems I use. Both are formulated to be as hypoallergenic as
+              possible, and although many with gel allergies have used these
+              products without a reaction, it is not a guarantee.
+            </p>
+            <p>
+              If you have a known gel allergy, please contact me for nail patch
+              test prior to scheduling an appointment. Patch test removal is
+              free. Any product recommendation from me is from my expertise as a
+              licensed nail tech and is not medical advice.
+            </p>
           </Blog>
           <Blog sectionId="rewards" title="Rewards">
-            <>
-              <Heading level={2}>Crush Club</Heading>
-              <p>
-                Cuticle Crush values returning clients and wants to show that!!!
-                I will manage your CC punchcard each service to track your
-                progress toward rewards 🤑
-              </p>
-              <div className="flex flex-row gap-4">
-                <Card className="flex-1 gap-2 p-4 text-center">
-                  <div className="text-xl">❤️</div>
-                  <Heading level={3}>Crush tier</Heading>
-                  <div className="flex-1" />
-                  <Stat label="appts 2, 4, 6, 8, and 10" value="5% off" />
-                  <Stat label="12th appt" value="10% off" />
-                  <div className="flex-1" />
-                </Card>
-                <Card className="flex-1 gap-2 p-4 text-center">
-                  <div className="text-xl">❤️❤️</div>
-                  <Heading level={3}>Beloved tier</Heading>
-                  <div className="flex-1" />
-                  <Stat label="appts 2, 4, 6, 8, and 10" value="5% off" />
-                  <Stat label="12th appt" value="20% off" />
-                  <div className="flex-1" />
-                </Card>
-                <Card className="flex-1 gap-2 p-4 text-center">
-                  <div className="text-xl">❤️❤️❤️</div>
-                  <Heading level={3}>Devoted tier</Heading>
-                  <div className="text-muted-foreground">
-                    Repeats after filling
-                  </div>
-                  <Stat label="appts 2, 4, 6, 8, and 10" value="5% off" />
-                  <Stat label="12th appt" value="30% off" />
-                  <Stat label="🎂🎁🎉" value="Birthday gift" />
-                </Card>
-              </div>
-              <Heading className="pt-8" level={2}>
-                Feedback please!
-              </Heading>
-              <p>
-                Leave a Google Review, and get $5 off your next appointment!
-                (Once per client.)
-              </p>
-            </>
+            <Heading level={2}>Crush Club</Heading>
+            <p>
+              Cuticle Crush values returning clients and wants to show that!!! I
+              will manage your CC punchcard each service to track your progress
+              toward rewards 🤑
+            </p>
+            <div className="flex flex-row gap-4">
+              <Card className="flex-1 gap-2 p-4 text-center">
+                <div className="text-xl">❤️</div>
+                <Heading level={3}>Crush tier</Heading>
+                <div className="flex-1" />
+                <Stat label="appts 2, 4, 6, 8, and 10" value="5% off" />
+                <Stat label="12th appt" value="10% off" />
+                <div className="flex-1" />
+              </Card>
+              <Card className="flex-1 gap-2 p-4 text-center">
+                <div className="text-xl">❤️❤️</div>
+                <Heading level={3}>Beloved tier</Heading>
+                <div className="flex-1" />
+                <Stat label="appts 2, 4, 6, 8, and 10" value="5% off" />
+                <Stat label="12th appt" value="20% off" />
+                <div className="flex-1" />
+              </Card>
+              <Card className="flex-1 gap-2 p-4 text-center">
+                <div className="text-xl">❤️❤️❤️</div>
+                <Heading level={3}>Devoted tier</Heading>
+                <div className="text-muted-foreground">
+                  Repeats after filling
+                </div>
+                <Stat label="appts 2, 4, 6, 8, and 10" value="5% off" />
+                <Stat label="12th appt" value="30% off" />
+                <Stat label="🎂🎁🎉" value="Birthday gift" />
+              </Card>
+            </div>
+            <Heading className="pt-8" level={2}>
+              Feedback please!
+            </Heading>
+            <p>
+              Leave a Google Review, and get $5 off your next appointment! (Once
+              per client.)
+            </p>
           </Blog>
         </div>
         <Contact />
