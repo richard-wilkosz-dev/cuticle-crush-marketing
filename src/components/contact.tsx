@@ -2,7 +2,7 @@ import {
   EnvelopeSimpleIcon,
   MapPinIcon,
   PhoneIcon,
-} from "@phosphor-icons/react"
+} from '@phosphor-icons/react';
 
 export function Contact() {
   return (
@@ -46,5 +46,5 @@ export function Contact() {
         </div>
       </div>
     </div>
-  )
+  );
 }

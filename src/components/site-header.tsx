@@ -1,18 +1,18 @@
-import { useIsMobile } from "@/hooks/use-mobile"
-import { HeartIcon } from "@phosphor-icons/react"
-import { SiteNav } from "./site-nav"
-import { Button } from "./ui/button"
+import { useIsMobile } from '@/hooks/use-mobile';
+import { HeartIcon } from '@phosphor-icons/react';
+import { SiteNav } from './site-nav';
+import { Button } from './ui/button';
 
 type SiteHeaderProps = {
-  activeTab?: string
-  onTabChange?: (value: string) => void
-}
+  activeTab?: string;
+  onTabChange?: (value: string) => void;
+};
 
 export function SiteHeader({
-  activeTab = "about-me",
+  activeTab = 'about-me',
   onTabChange,
 }: SiteHeaderProps) {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
 
   return (
     <header className="sticky top-0 z-50 flex w-full items-center border-b bg-card">
@@ -28,7 +28,7 @@ export function SiteHeader({
         </div> */}
         <HeartIcon className="h-6 w-6 text-primary" weight="bold" />
         <span className="text-sm font-semibold">
-          {import.meta.env.DEV && isMobile ? "Mobile Crush" : "Cuticle Crush"}
+          {import.meta.env.DEV && isMobile ? 'Mobile Crush' : 'Cuticle Crush'}
         </span>
         <div className="flex-1" />
         <SiteNav value={activeTab} onValueChange={onTabChange} />
@@ -36,7 +36,7 @@ export function SiteHeader({
           className="rounded-full"
           onClick={() =>
             window.navigation.navigate(
-              "https://www.nailzy.com/book/cuticle-crush?book=1"
+              'https://www.nailzy.com/book/cuticle-crush?book=1',
             )
           }
         >
@@ -44,5 +44,5 @@ export function SiteHeader({
         </Button>
       </div>
     </header>
-  )
+  );
 }

@@ -1,30 +1,30 @@
-import Autoplay from "embla-carousel-autoplay"
-import { useRef } from "react"
-import placeholderSquare from "@/assets/placeholder-square.avif"
-import placeholderWide from "@/assets/placeholder-wide.avif"
-import { SiteHeader } from "@/components/site-header"
-import { useActiveSection } from "@/hooks/use-active-section"
-import { useIsMobile } from "@/hooks/use-mobile"
-import { Blog } from "./blog"
-import { Contact } from "./contact"
-import { Heading } from "./heading"
-import { Stat } from "./stat"
-import { AspectRatio } from "./ui/aspect-ratio"
-import { Card } from "./ui/card"
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
+import Autoplay from 'embla-carousel-autoplay';
+import { useRef } from 'react';
+import placeholderSquare from '@/assets/placeholder-square.avif';
+import placeholderWide from '@/assets/placeholder-wide.avif';
+import { SiteHeader } from '@/components/site-header';
+import { useActiveSection } from '@/hooks/use-active-section';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Blog } from './blog';
+import { Contact } from './contact';
+import { Heading } from './heading';
+import { Stat } from './stat';
+import { AspectRatio } from './ui/aspect-ratio';
+import { Card } from './ui/card';
+import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
 
 const sections = [
-  { id: "about-me", title: "About me" },
-  { id: "studio", title: "Studio" },
-  { id: "products", title: "Products" },
-  { id: "rewards", title: "Rewards" },
-  { id: "contact", title: "Contact" },
-] as const
+  { id: 'about-me', title: 'About me' },
+  { id: 'studio', title: 'Studio' },
+  { id: 'products', title: 'Products' },
+  { id: 'rewards', title: 'Rewards' },
+  { id: 'contact', title: 'Contact' },
+] as const;
 
-const sectionIds = sections.map((section) => section.id)
-const placeholderSquareSrc = placeholderSquare.src
-const placeholderWideSrc = placeholderWide.src
-const heroImages = [placeholderWideSrc, placeholderWideSrc]
+const sectionIds = sections.map((section) => section.id);
+const placeholderSquareSrc = placeholderSquare.src;
+const placeholderWideSrc = placeholderWide.src;
+const heroImages = [placeholderWideSrc, placeholderWideSrc];
 
 // const mockCopy = (
 //   <>
@@ -49,20 +49,20 @@ const heroImages = [placeholderWideSrc, placeholderWideSrc]
 // )
 
 export function LandingPage() {
-  const isMobile = useIsMobile()
-  const activeSection = useActiveSection(sectionIds)
+  const isMobile = useIsMobile();
+  const activeSection = useActiveSection(sectionIds);
   const autoplay = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
-  )
+    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }),
+  );
 
   const handleTabChange = (sectionId: string) => {
-    const targetSection = document.getElementById(sectionId)
+    const targetSection = document.getElementById(sectionId);
     if (!targetSection) {
-      return
+      return;
     }
 
-    targetSection.scrollIntoView({ behavior: "smooth", block: "start" })
-  }
+    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <div className="[--header-height:calc(--spacing(14))]">
@@ -239,5 +239,5 @@ export function LandingPage() {
         <Contact />
       </div>
     </div>
-  )
+  );
 }

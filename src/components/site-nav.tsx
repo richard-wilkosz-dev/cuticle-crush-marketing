@@ -5,33 +5,33 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+} from '@/components/ui/select';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 type SiteNavProps = {
-  value?: string
-  defaultValue?: string
-  onValueChange?: (value: string) => void
-}
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
+};
 
 const items = [
-  { label: "About me", value: "about-me" },
-  { label: "Studio", value: "studio" },
-  { label: "Products", value: "products" },
-  { label: "Rewards", value: "rewards" },
-  { label: "Contact", value: "contact" },
-]
+  { label: 'About me', value: 'about-me' },
+  { label: 'Studio', value: 'studio' },
+  { label: 'Products', value: 'products' },
+  { label: 'Rewards', value: 'rewards' },
+  { label: 'Contact', value: 'contact' },
+];
 
 export function SiteNav({ value, defaultValue, onValueChange }: SiteNavProps) {
   const selectedItem =
     items.find((item) => item.value === value) ??
-    items.find((item) => item.value === defaultValue)
+    items.find((item) => item.value === defaultValue);
 
   const handleSelectValueChange = (nextValue: string | null) => {
     if (nextValue) {
-      onValueChange?.(nextValue)
+      onValueChange?.(nextValue);
     }
-  }
+  };
 
   return (
     <>
@@ -69,5 +69,5 @@ export function SiteNav({ value, defaultValue, onValueChange }: SiteNavProps) {
         </TabsList>
       </Tabs>
     </>
-  )
+  );
 }

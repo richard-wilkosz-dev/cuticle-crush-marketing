@@ -1,5 +1,5 @@
-import { HeartIcon } from "@phosphor-icons/react"
-import { useEffect, useState } from "react"
+import { HeartIcon } from '@phosphor-icons/react';
+import { useEffect, useState } from 'react';
 import {
   Carousel,
   CarouselContent,
@@ -7,11 +7,11 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
-} from "./ui/carousel"
+} from './ui/carousel';
 
 type ImageProps = {
-  images: string[]
-}
+  images: string[];
+};
 
 export function Image({ images }: ImageProps) {
   if (images.length === 1) {
@@ -21,29 +21,29 @@ export function Image({ images }: ImageProps) {
         src={images[0]}
         className="mx-auto h-full w-full rounded-4xl sm:max-w-sm"
       />
-    )
+    );
   } else if (images.length > 1) {
-    const [api, setApi] = useState<CarouselApi>()
-    const [selectedIndex, setSelectedIndex] = useState(0)
+    const [api, setApi] = useState<CarouselApi>();
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
     useEffect(() => {
       if (!api) {
-        return
+        return;
       }
 
       const onSelect = () => {
-        setSelectedIndex(api.selectedScrollSnap())
-      }
+        setSelectedIndex(api.selectedScrollSnap());
+      };
 
-      onSelect()
-      api.on("select", onSelect)
-      api.on("reInit", onSelect)
+      onSelect();
+      api.on('select', onSelect);
+      api.on('reInit', onSelect);
 
       return () => {
-        api.off("select", onSelect)
-        api.off("reInit", onSelect)
-      }
-    }, [api])
+        api.off('select', onSelect);
+        api.off('reInit', onSelect);
+      };
+    }, [api]);
 
     return (
       <Carousel
@@ -79,13 +79,13 @@ export function Image({ images }: ImageProps) {
             aria-label="Slide progress"
           >
             {images.map((_, index) => {
-              const [hovered, setHovered] = useState(false)
+              const [hovered, setHovered] = useState(false);
               return (
                 <button
                   key={index}
                   type="button"
                   aria-label={`Go to slide ${index + 1}`}
-                  aria-current={selectedIndex === index ? "true" : "false"}
+                  aria-current={selectedIndex === index ? 'true' : 'false'}
                   onClick={() => api?.scrollTo(index)}
                 >
                   <HeartIcon
@@ -95,20 +95,20 @@ export function Image({ images }: ImageProps) {
                     size={24}
                     weight={
                       selectedIndex === index
-                        ? "fill"
+                        ? 'fill'
                         : hovered
-                          ? "duotone"
-                          : "regular"
+                          ? 'duotone'
+                          : 'regular'
                     }
                   />
                 </button>
-              )
+              );
             })}
           </div>
         </div>
       </Carousel>
-    )
+    );
   }
 
-  return null
+  return null;
 }
