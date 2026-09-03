@@ -29,8 +29,8 @@ export function Blog({
           isMobile
             ? 'flex-col'
             : reversed
-              ? 'sm:flex-row-reverse'
-              : 'sm:flex-row',
+              ? 'sm:flex-row'
+              : 'sm:flex-row-reverse',
         )}
       >
         <Heading level={1} className="text-3xl font-semibold sm:hidden">
