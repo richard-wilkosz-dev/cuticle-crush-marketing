@@ -1,48 +1,39 @@
 import type { ReactNode } from 'react';
-import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 import { Heading } from './heading';
 import { Image } from './image';
 
 type BlogProps = {
+  className?: string;
   sectionId: string;
   title: string;
   children: ReactNode;
   images?: string[];
-  reversed?: boolean;
 };
 
 export function Blog({
+  className,
   sectionId,
   title,
   children,
   images,
-  reversed,
 }: BlogProps) {
-  const isMobile = useIsMobile();
-
   return (
-    <section className="scroll-mt-24" id={sectionId}>
-      <div
-        className={cn(
-          'flex flex-col gap-2 sm:gap-8',
-          isMobile
-            ? 'flex-col'
-            : reversed
-              ? 'sm:flex-row'
-              : 'sm:flex-row-reverse',
-        )}
-      >
+    <section
+      className={cn('scroll-mt-24  flex-col gap-12 ', className)}
+      id={sectionId}
+    >
+      <div className="px-8 py-12 m-auto max-w-3xl">
         <Heading level={1} className="text-3xl font-semibold sm:hidden">
           {title}
         </Heading>
-        <Image images={images ?? []} />
-        <div className="flex flex-col">
-          <Heading level={1} className="hidden text-3xl font-semibold sm:block">
-            {title}
-          </Heading>
-          <div className="pt-2">{children}</div>
-        </div>
+        {images && (
+          <Image className="float-right max-w-sm ml-8" images={images ?? []} />
+        )}
+        <Heading level={1} className="hidden text-3xl font-semibold sm:block">
+          {title}
+        </Heading>
+        <div className="pt-2">{children}</div>
       </div>
     </section>
   );
