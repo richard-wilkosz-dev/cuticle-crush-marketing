@@ -1,5 +1,5 @@
-import { useIsMobile } from '@/hooks/use-mobile';
 import { HeartIcon } from '@phosphor-icons/react';
+// import { useIsMobile } from '@/hooks/use-mobile';
 import { SiteNav } from './site-nav';
 import { Button } from './ui/button';
 
@@ -12,11 +12,11 @@ export function SiteHeader({
   activeTab = 'about-me',
   onTabChange,
 }: SiteHeaderProps) {
-  const isMobile = useIsMobile();
+  // const isMobile = useIsMobile();
 
   return (
     <header className="sticky top-0 z-50 flex w-full items-center border-b bg-card">
-      <div className="flex h-(--header-height) w-full items-center gap-2 px-4">
+      <div className="flex h-(--header-height) max-w-3xl mx-auto w-full items-center gap-2 px-4">
         {/* <div className="sm:hidden">
           <SiteDrawer>
             <NavTabs
@@ -26,10 +26,11 @@ export function SiteHeader({
             />
           </SiteDrawer>
         </div> */}
-        <HeartIcon className="h-6 w-6 text-primary" weight="bold" />
-        <span className="text-sm font-semibold">
-          {import.meta.env.DEV && isMobile ? 'Mobile Crush' : 'Cuticle Crush'}
+        {/* <img src="/public/favicon.png" alt="Cuticle Crush Logo" /> */}
+        <span className="font-logo text-lg sm:text-2xl tracking-wider">
+          Cuticle Crush
         </span>
+
         <div className="flex-1" />
         <SiteNav value={activeTab} onValueChange={onTabChange} />
         <Button

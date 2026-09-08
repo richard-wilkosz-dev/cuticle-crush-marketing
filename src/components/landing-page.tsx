@@ -1,37 +1,37 @@
-import { HeartIcon } from '@phosphor-icons/react';
-import Autoplay from 'embla-carousel-autoplay';
-import { useRef } from 'react';
+// import Autoplay from 'embla-carousel-autoplay';
+// import { useRef } from 'react';
 
-import placeholderSquare from '@/assets/placeholder-square.avif';
-import placeholderWide from '@/assets/placeholder-wide.avif';
+import { HeartIcon } from '@phosphor-icons/react';
+import logo from '@/assets/logo.png';
 import { SiteHeader } from '@/components/site-header';
 import { useActiveSection } from '@/hooks/use-active-section';
-import { useIsMobile } from '@/hooks/use-mobile';
+// import { useIsMobile } from '@/hooks/use-mobile';
 import { AboutMe } from './about-me';
-import { Blog } from './blog';
+import { Accessibility } from './accessibility';
 import { Contact } from './contact';
-import { Heading } from './heading';
+import { Policies } from './policies';
 import { Products } from './products';
 import { Rewards } from './rewards';
 import { Services } from './services';
-import { Stat } from './stat';
 import { Studio } from './studio';
-import { AspectRatio } from './ui/aspect-ratio';
-import { Card } from './ui/card';
-import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
+
+// import { AspectRatio } from './ui/aspect-ratio';
+// import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
 
 const sections = [
-  { id: 'about-me', title: 'About me' },
+  { id: 'services', title: 'Services' },
   { id: 'studio', title: 'Studio' },
   { id: 'products', title: 'Products' },
+  { id: 'about-me', title: 'About me' },
+  { id: 'policies', title: 'Policies' },
+  { id: 'accessibility', title: 'Accessibility' },
   { id: 'rewards', title: 'Rewards' },
   { id: 'contact', title: 'Contact' },
 ] as const;
 
 const sectionIds = sections.map((section) => section.id);
-const placeholderSquareSrc = placeholderSquare.src;
-const placeholderWideSrc = placeholderWide.src;
-const heroImages = [placeholderWideSrc, placeholderWideSrc];
+// const placeholderWideSrc = placeholderWide.src;
+// const heroImages = [placeholderWideSrc, placeholderWideSrc];
 
 // const mockCopy = (
 //   <>
@@ -56,11 +56,11 @@ const heroImages = [placeholderWideSrc, placeholderWideSrc];
 // )
 
 export function LandingPage() {
-  const isMobile = useIsMobile();
+  // const isMobile = useIsMobile();
   const activeSection = useActiveSection(sectionIds);
-  const autoplay = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }),
-  );
+  // const autoplay = useRef(
+  //   Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }),
+  // );
 
   const handleTabChange = (sectionId: string) => {
     const targetSection = document.getElementById(sectionId);
@@ -75,7 +75,18 @@ export function LandingPage() {
     <div className="[--header-height:calc(--spacing(14))]">
       <SiteHeader activeTab={activeSection} onTabChange={handleTabChange} />
       <div className="flex flex-col">
-        <AspectRatio
+        <img
+          className="h-75 w-75 mx-auto"
+          src={logo.src}
+          alt="Logo"
+          style={{ rotate: '-5deg' }}
+        />
+        <span className="mx-auto -mt-5 text-xl font-semibold">
+          Private nail studio{' '}
+          <HeartIcon className="inline size-4 mb-1" weight="fill" />{' '}
+          Minneapolis, MN
+        </span>
+        {/* <AspectRatio
           ratio={isMobile ? 2 / 1 : 5 / 1}
           className="overflow-hidden"
         >
@@ -97,13 +108,15 @@ export function LandingPage() {
               ))}
             </CarouselContent>
           </Carousel>
-        </AspectRatio>
+        </AspectRatio> */}
         <div className="flex-col">
-          <AboutMe />
-          <Studio />
-          <Products />
-          <Rewards />
           <Services />
+          <Products />
+          <Studio />
+          <AboutMe />
+          <Policies />
+          <Accessibility />
+          <Rewards />
         </div>
         <Contact />
       </div>

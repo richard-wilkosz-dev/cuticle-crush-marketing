@@ -1,5 +1,6 @@
 import {
   EnvelopeSimpleIcon,
+  InstagramLogoIcon,
   MapPinIcon,
   PhoneIcon,
 } from '@phosphor-icons/react';
@@ -23,6 +24,10 @@ export function Contact() {
                 Exact address shared 24 hours before your appointment.
               </span>
             </div>
+            <InstagramLogoIcon className="text-accent-foreground" size={16} />
+            <a href="https://www.instagram.com/cuticlecrush.mn?stkn=Njlvcmo0eWg3dWZv&utm_source=qr" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
           </div>
         </div>
         <div className="flex flex-col gap-4">

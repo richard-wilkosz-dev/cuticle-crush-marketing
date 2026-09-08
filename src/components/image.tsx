@@ -12,10 +12,17 @@ import {
 
 type ImageProps = {
   images: string[];
+  captions?: string[];
   className?: string;
+  inline?: boolean;
 };
 
-export function Image({ images, className }: ImageProps) {
+export function Image({
+  images,
+  captions = ['1', '2', '3', '4', '5'],
+  className,
+  inline,
+}: ImageProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
@@ -51,19 +58,24 @@ export function Image({ images, className }: ImageProps) {
   return (
     <Carousel
       aria-hidden
-      className={cn('h-full w-full', className)}
+      className={cn('h-full w-full bg-card rounded-4xl border', className)}
       setApi={setApi}
       opts={{ loop: true }}
     >
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={image.toString()}>
-            <img src={images[index]} aria-hidden className="rounded-t-4xl" />
+            <div className="p-4 py-3 text-md">{captions[index]}</div>
+            <img
+              src={images[index]}
+              aria-hidden
+              className={cn(!inline && !captions[index] && 'rounded-t-4xl')}
+            />
           </CarouselItem>
         ))}
       </CarouselContent>
 
-      <div className="flex items-center rounded-b-4xl border bg-card p-4 py-3">
+      <div className={cn('flex items-center p-4 py-3')}>
         <div className="flex items-center gap-2">
           <CarouselPrevious
             className="static bg-card"
