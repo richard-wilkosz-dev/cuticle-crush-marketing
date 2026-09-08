@@ -1,8 +1,8 @@
 import { HeartIcon } from '@phosphor-icons/react';
-import { Blog } from './blog';
-import { Heading } from './heading';
-import { Stat } from './stat';
-import { Card } from './ui/card';
+import { Blog } from '../blog';
+import { Heading } from '../heading';
+import { Stat } from '../stat';
+import { Card } from '../ui/card';
 
 export const Rewards = () => {
   return (

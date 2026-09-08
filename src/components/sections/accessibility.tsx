@@ -1,5 +1,5 @@
-import { Blog } from './blog';
-import { Heading } from './heading';
+import { Blog } from '../blog';
+import { Heading } from '../heading';
 
 export const Accessibility = () => {
   return (

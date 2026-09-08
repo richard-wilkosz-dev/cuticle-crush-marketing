@@ -51,6 +51,8 @@ export function Image({
       <img
         aria-hidden
         src={images[0]}
+        loading="lazy"
+        decoding="async"
         className={cn('h-full w-full rounded-4xl', className)}
       />
     );
@@ -69,6 +71,8 @@ export function Image({
             <img
               src={images[index]}
               aria-hidden
+              loading="lazy"
+              decoding="async"
               className={cn(!inline && !captions[index] && 'rounded-t-4xl')}
             />
           </CarouselItem>

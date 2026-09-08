@@ -5,15 +5,14 @@ import { HeartIcon } from '@phosphor-icons/react';
 import logo from '@/assets/logo.png';
 import { SiteHeader } from '@/components/site-header';
 import { useActiveSection } from '@/hooks/use-active-section';
-// import { useIsMobile } from '@/hooks/use-mobile';
-import { AboutMe } from './about-me';
-import { Accessibility } from './accessibility';
 import { Contact } from './contact';
-import { Policies } from './policies';
-import { Products } from './products';
-import { Rewards } from './rewards';
-import { Services } from './services';
-import { Studio } from './studio';
+import { AboutMe } from './sections/about-me';
+import { Accessibility } from './sections/accessibility';
+import { Policies } from './sections/policies';
+import { Products } from './sections/products';
+import { Rewards } from './sections/rewards';
+import { Services } from './sections/services';
+import { Studio } from './sections/studio';
 
 // import { AspectRatio } from './ui/aspect-ratio';
 // import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
@@ -30,33 +29,8 @@ const sections = [
 ] as const;
 
 const sectionIds = sections.map((section) => section.id);
-// const placeholderWideSrc = placeholderWide.src;
-// const heroImages = [placeholderWideSrc, placeholderWideSrc];
-
-// const mockCopy = (
-//   <>
-//     <p>
-//       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis
-//       nisl vel neque lobortis gravida. Nulla porta finibus elit, at molestie
-//       turpis dignissim ac. Nullam vitae orci dui. Cras egestas purus eget nibh
-//       rutrum pulvinar.
-//     </p>
-//     <p>
-//       Fusce vehicula sed risus id placerat. Vivamus consequat quam non sem
-//       mollis, ut interdum neque posuere. Vivamus erat turpis, convallis vitae
-//       tincidunt et, euismod in ante. Pellentesque fermentum dolor at tincidunt
-//       feugiat.
-//     </p>
-//     <p>
-//       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis
-//       nisl vel neque lobortis gravida. Nulla porta finibus elit, at molestie
-//       turpis dignissim ac.
-//     </p>
-//   </>
-// )
 
 export function LandingPage() {
-  // const isMobile = useIsMobile();
   const activeSection = useActiveSection(sectionIds);
   // const autoplay = useRef(
   //   Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }),
@@ -76,9 +50,13 @@ export function LandingPage() {
       <SiteHeader activeTab={activeSection} onTabChange={handleTabChange} />
       <div className="flex flex-col">
         <img
-          className="h-75 w-75 mx-auto"
+          className="mx-auto h-75 w-75"
           src={logo.src}
           alt="Logo"
+          width={300}
+          height={300}
+          fetchPriority="high"
+          decoding="async"
           style={{ rotate: '-5deg' }}
         />
         <span className="mx-auto -mt-5 text-xl font-semibold">

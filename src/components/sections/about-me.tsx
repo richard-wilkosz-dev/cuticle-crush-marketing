@@ -1,5 +1,5 @@
 import aboutMe from '@/assets/about-me.webp';
-import { Blog } from './blog';
+import { Blog } from '../blog';
 
 export const AboutMe = () => {
   return (
