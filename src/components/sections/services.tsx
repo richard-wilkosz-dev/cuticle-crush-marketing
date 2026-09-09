@@ -321,7 +321,6 @@ export const Services = () => {
         <a
           className="text-rose-900 underline"
           href="https://www.nailzy.com/book/cuticle-crush?book=1"
-          target="_blank"
           rel="noopener noreferrer"
         >
           detailed here.

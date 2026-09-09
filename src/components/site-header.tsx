@@ -36,8 +36,9 @@ export function SiteHeader({
         <Button
           className="rounded-full"
           onClick={() =>
-            window.navigation.navigate(
+            window.open(
               'https://www.nailzy.com/book/cuticle-crush?book=1',
+              '_self',
             )
           }
         >
