@@ -16,7 +16,7 @@ export function SiteHeader({
 
   return (
     <header className="sticky top-0 z-50 flex w-full items-center border-b bg-card">
-      <div className="flex h-(--header-height) max-w-3xl mx-auto w-full items-center gap-2 px-4">
+      <div className="flex h-(--header-height) max-w-3xl mx-auto w-full items-center gap-1 px-4">
         {/* <div className="sm:hidden">
           <SiteDrawer>
             <NavTabs
@@ -27,23 +27,19 @@ export function SiteHeader({
           </SiteDrawer>
         </div> */}
         {/* <img src="/public/favicon.png" alt="Cuticle Crush Logo" /> */}
-        <span className="font-logo text-lg sm:text-2xl tracking-wider">
-          Cuticle Crush
-        </span>
+        <div className="flex flex-1 text-sm font-semibold">Cuticle Crush</div>
 
-        <div className="flex-1" />
+        <div className="flex" />
         <SiteNav value={activeTab} onValueChange={onTabChange} />
-        <Button
-          className="rounded-full"
-          onClick={() =>
-            window.open(
-              'https://www.nailzy.com/book/cuticle-crush?book=1',
-              '_self',
-            )
-          }
+        <a
+          href="https://www.nailzy.com/book/cuticle-crush?book=1"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <span className="px-2 text-[13px] font-semibold">Book now</span>
-        </Button>
+          <Button className="rounded-full">
+            <span className="px-2 text-[13px] font-semibold">Book now</span>
+          </Button>
+        </a>
       </div>
     </header>
   );
